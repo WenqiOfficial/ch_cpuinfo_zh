@@ -5,7 +5,7 @@
 
 ![image](https://user-images.githubusercontent.com/42568682/218249473-f8fe1241-49dd-482c-a0fa-4d673fcfd754.png)
 
-** NAS上下载补丁 **
+**NAS上下载补丁**
 
 1. 使用DSM的管理员账户登录SSH到NAS. (DSM > 控制面板 > 终端机和SNMP > 终端机 > 启用 SSH 功能)
 
@@ -21,7 +21,7 @@
 
 4. 从 "电脑下载补丁 6." 继续
 
-** 电脑下载补丁 **
+**电脑下载补丁**
 
 1. 将补丁下载到电脑上 ([ch_cpuinfo.sh](https://github.com/WenqiOfficial/ch_cpuinfo_zh/releases/download/v4.2.1-r01-zhv2/ch_cpuinfo.sh))
 
