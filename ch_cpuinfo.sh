@@ -164,7 +164,7 @@ GATHER_FN() {
 	if [ "$LC_CHK" == "Beijing" ]; then
 		if [ "$cpu_vendor" == "Intel" ] && [ "$LC_CHK" == "Beijing" ]; then
 			if [ "$cpu_series" == "ES" ] || [ "$cpu_series" == "Unkown" ]; then
-				cpu_detail="<a href='https:\/\/ark.intel.com\/content\/www\/cn\/zh\/ark.html' target=_blank>| Find<\/a>"
+				cpu_detail="| <a href='https:\/\/ark.intel.com\/content\/www\/cn\/zh\/ark.html' target=_blank>Find<\/a>"
 			else
 				cpu_search="https://ark.intel.com/content/www/cn/zh/ark/search.html?_charset_=UTF-8&q=$cpu_series"
 				temp_file="/tmp/cpu_info_temp_url.txt"
@@ -186,7 +186,7 @@ GATHER_FN() {
 				fi
 				cpu_gen=$(curl --silent https://ark.intel.com$gen_url | grep "先前产品为" | awk -F"先前产品为 " '{print $2}' | sed "s/<\/a>//g")
 				gen_url=$(echo $gen_url | sed "s/\//\\\\\//g")
-				cpu_detail="($cpu_gen ) <a href='https:\/\/ark.intel.com$gen_url' target=_blank>| Detail<\/a>"
+				cpu_detail="($cpu_gen ) | <a href='https:\/\/ark.intel.com$gen_url' target=_blank>Detail<\/a>"
 			fi
 		elif [ "$cpu_vendor" == "AMD" ] && [ "$LC_CHK" == "Beijing" ]; then
 			cpu_search=$(echo "$cpu_series" | awk '{print $1" "$2}')
@@ -214,14 +214,14 @@ GATHER_FN() {
 				curl --silent -H "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36" http://stackoverflow.com/questions/28760694/how-to-use-curl-to-get-a-get-request-exactly-same-as-using-chrome \
 				https://www.amd.com/zh-hans/product/$gen_url | egrep -A 2 -w ">产品代号<|>Architecture<" | grep "field__item" | sed "s/&quot;/\"/g" | awk -F\"\>\" '{print $2}' | awk -F\" '{print $1}' | tr "\n" "| " | awk -F\| '{if($2=="") {print $1} else {print $1" | " $2}}'
 			)
-			cpu_detail="($cpu_gen) <a href='https:\/\/www.amd.com\/zh-hans\/product\/$gen_url' target=_blank>| Detail<\/a>"
+			cpu_detail="($cpu_gen) | <a href='https:\/\/www.amd.com\/zh-hans\/product\/$gen_url' target=_blank>Detail<\/a>"
 		else
 			cpu_detail=""
 		fi
 	else
 		if [ "$cpu_vendor" == "Intel" ]; then
 			if [ "$cpu_series" == "ES" ] || [ "$cpu_series" == "Unkown" ]; then
-				cpu_detail="<a href='https:\/\/ark.intel.com\/content\/www\/us\/en\/ark.html' target=_blank>| Find<\/a>"
+				cpu_detail="| <a href='https:\/\/ark.intel.com\/content\/www\/us\/en\/ark.html' target=_blank>Find<\/a>"
 			else
 				cpu_search="https://ark.intel.com/content/www/us/en/ark/search.html?_charset_=UTF-8&q=$cpu_series"
 				temp_file="/tmp/cpu_info_temp_url.txt"
@@ -243,7 +243,7 @@ GATHER_FN() {
 				fi
 				cpu_gen=$(curl --silent https://ark.intel.com$gen_url | grep "Products formerly" | awk -F"Products formerly " '{print $2}' | sed "s/<\/a>//g")
 				gen_url=$(echo $gen_url | sed "s/\//\\\\\//g")
-				cpu_detail="($cpu_gen) <a href='https:\/\/ark.intel.com$gen_url' target=_blank>| Detail<\/a>"
+				cpu_detail="($cpu_gen) | <a href='https:\/\/ark.intel.com$gen_url' target=_blank>Detail<\/a>"
 			fi
 		elif [ "$cpu_vendor" == "AMD" ]; then
 			cpu_search=$(echo "$cpu_series" | awk '{print $1" "$2}')
@@ -271,7 +271,7 @@ GATHER_FN() {
 				curl --silent -H "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36" http://stackoverflow.com/questions/28760694/how-to-use-curl-to-get-a-get-request-exactly-same-as-using-chrome \
 				https://www.amd.com/en/product/$gen_url | egrep -A 2 -w ">Former Codename<|>Architecture<" | grep "field__item" | sed "s/&quot;/\"/g" | awk -F\"\>\" '{print $2}' | awk -F\" '{print $1}' | tr "\n" "| " | awk -F\| '{if($2=="") {print $1} else {print $1" | " $2}}'
 			)
-			cpu_detail="($cpu_gen) <a href='https:\/\/www.amd.com\/en\/product\/$gen_url' target=_blank>| Detail<\/a>"
+			cpu_detail="($cpu_gen) | <a href='https:\/\/www.amd.com\/en\/product\/$gen_url' target=_blank>Detail<\/a>"
 		else
 			cpu_detail=""
 		fi
